@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Grotesk:200i,400&display=swap');
+
+:root {
+    --color-white: #f3f3f3;
+    --color-darkblue: #1b1b32;
+    --color-darkblue-alpha: rgba(27, 27, 50, 0.8);
+    --color-green: #37af65;
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    list-style-type: none;
+}
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-white);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    margin: 5px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+button {
+    margin: 5px;
+    cursor: pointer;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: var(--color-darkblue);
+    background-image: linear-gradient(
+        60deg,
+        rgba(50, 58, 158, .9),
+        rgba(226, 19, 127, .9)
+      ),
+      url(https://i.imgur.com/oqCTjc2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+
+
+.material-symbols-outlined {
+    pointer-events: none;
+}
+
+
+
+.done {
+   text-decoration: line-through;
+}
+
+.todo-container{
+    color: black;
+    margin-top: 15px;
+}
+
+
+.todo-item-card {
+    background-color: White;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    max-width: 500px;
+    
+}
+
+.animate-out{
+   background-color: gold;
+}
+
+.todo-item{
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.sub-todo-list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+}
+
+.over-due {
+    background-color: #ff5959;
+}
+.due-today {
+    background-color: yellow;
+}
+
+.showHide {
+    content: "";
+  cursor:pointer;
+  transition: ease all .3s;
+}
+.rotated-image {
+    -webkit-transform: rotate(45deg) !important;
+           transform: rotate(45deg) !important;
+   transition: ease all .3s;
+ }
+
+
