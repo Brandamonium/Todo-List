@@ -21,12 +21,10 @@ function addTodo(event) {
   const todoDate = document.getElementById("due-date").value;
   const todoDateContainer = document.createElement("div");
   const subTodo = document.createElement("ul");
-  const hideButton = document.createElement("span");
 
   //get input field value
   todoTitleContainer.innerText = todoTitle;
   descriptionContainer.innerText = todoDescription;
-
   todoDateContainer.innerText = "Due Date: " + todoDate;
   //newTodo.innerText = todoDescription;
   if (todoTitle === "") {
@@ -35,7 +33,8 @@ function addTodo(event) {
     //set input fields to default
     document.getElementById("input").value = "";
     document.getElementById("description").value = "";
-    document.getElementById("due-date").value = "";
+    //document.getElementById("due-date").value = "";
+
     //render task item
     newTodo.classList.add("todo-item-card");
     todoTitleContainer.classList.add("todo-item");
