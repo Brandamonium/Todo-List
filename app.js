@@ -8,6 +8,7 @@ todoList.addEventListener("click", completeTodo);
 todoList.addEventListener("click", addSubTask);
 todoList.addEventListener("click", completeSubTodo);
 todoList.addEventListener("click", deleteSubTodo);
+todoList.addEventListener("click", showHide);
 
 function addTodo(event) {
   event.preventDefault();
@@ -18,6 +19,8 @@ function addTodo(event) {
   const todoTitleContainer = document.createElement("div"); //create span for todo item container
   const todoDescription = document.getElementById("description").value;
   const descriptionContainer = document.createElement("div"); //create span for todo item container
+  const descriptionTitle = document.createElement("span");
+  const showHideDescription = document.createElement("span");
   const todoDate = document.getElementById("due-date").value;
   const todoDateContainer = document.createElement("div");
   const subTodo = document.createElement("ul");
@@ -35,17 +38,23 @@ function addTodo(event) {
     document.getElementById("description").value = "";
     //document.getElementById("due-date").value = "";
 
-    //render task item
+    //add class names to items
     newTodo.classList.add("todo-item-card");
     todoTitleContainer.classList.add("todo-item");
     descriptionContainer.classList.add("todo-description");
     subTodo.classList.add("sub-todo-list");
     todoDateContainer.classList.add("due-date");
+    showHideDescription.setAttribute("id", "arrow");
+    showHideDescription.classList.add("rotated-image");
+    descriptionTitle.innerHTML = "Description:";
+    //showHideDescription.classList.add("showHide");
 
     todoList.appendChild(newTodo);
     newTodo.appendChild(todoTitleContainer);
-    newTodo.appendChild(todoDateContainer);
+    newTodo.appendChild(descriptionTitle);
+    newTodo.appendChild(showHideDescription);
     newTodo.appendChild(descriptionContainer);
+    newTodo.appendChild(todoDateContainer);
     newTodo.appendChild(subTodo);
 
     //render subtask button
@@ -91,8 +100,7 @@ function completeTodo(event) {
     const todoItem = element.parentElement;
     const subList =
       element.parentElement.nextElementSibling.nextElementSibling
-        .nextElementSibling;
-    // const item = element.previousElementSibling.previousElementSibling;
+        .nextElementSibling.nextElementSibling.nextElementSibling;
     todoItem.classList.toggle("done");
     //item.classList.toggle("done");
     subList.classList.toggle("done");
@@ -125,14 +133,14 @@ function completeSubTodo(event) {
         console.log(array[i].parentElement);
         array[
           i
-        ].parentElement.previousElementSibling.previousElementSibling.previousElementSibling.classList.add(
+        ].parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.classList.add(
           "done"
         );
       } else {
         console.log("they are NOT the same");
         array[
           i
-        ].parentElement.previousElementSibling.previousElementSibling.previousElementSibling.classList.remove(
+        ].parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.classList.remove(
           "done"
         );
       }
@@ -173,7 +181,7 @@ function addSubTask(event) {
     const subTodoTitle = prompt("Enter the sub task", "Sub Task");
     const subTodoList =
       element.parentElement.nextElementSibling.nextElementSibling
-        .nextElementSibling; //Come back to this when debugging render order!!!!
+        .nextElementSibling.nextElementSibling.nextElementSibling;
     newSubTodoItem.innerText = subTodoTitle;
 
     //create subtask done button
@@ -198,10 +206,6 @@ function addSubTask(event) {
   }
 }
 
-function checkDone(event) {
-  const element = event.target;
-}
-
 function pastDateCheck(dueDate) {
   const setDueDate = dueDate;
   const today = new Date();
@@ -221,8 +225,22 @@ function checkDueDate() {
 
   if (date < todaysDate) {
     console.log("over due");
-    console.log();
   } else {
     console.log("still have time");
+  }
+}
+
+function showHide(event) {
+  const element = event.target;
+
+  if (
+    element.id === "arrow" &&
+    element.getAttribute("class") == "rotated-image"
+  ) {
+    element.classList.remove("rotated-image");
+    element.nextElementSibling.classList.add("hide");
+  } else if (element.id === "arrow") {
+    element.classList.add("rotated-image");
+    element.nextElementSibling.classList.remove("hide");
   }
 }
