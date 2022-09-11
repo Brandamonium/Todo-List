@@ -38,6 +38,16 @@ label {
 
 input {
     margin-bottom: 10px;
+    border-radius: 4px;
+    border: 2px solid #320049;
+    height: 30px;
+}
+
+textarea {
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 2px solid #320049;
+    height: 30px;
 }
 
 .input-container {
@@ -94,7 +104,8 @@ body::before {
     padding: 10px;
     margin: 10px;
     max-width: 500px;
-    
+    filter: drop-shadow(10px 5px 6px #320049a1);
+
 }
 
 .animate-out{
@@ -157,6 +168,7 @@ transition: ease all .3s;
  .todo-description{
     max-height: 500px;
     transition: max-height 0.45s ease-in ;
+    word-wrap: break-word;
  }
 
 
