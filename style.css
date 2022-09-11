@@ -149,8 +149,14 @@ transition: ease all .3s;
  }
 
  .hide {
-    display: none;
-    transition: ease all .3s;
+    max-height: 0 !important;
+    transition: max-height 0.565s ease-out !important;
+    overflow: hidden;
+ }
+
+ .todo-description{
+    max-height: 500px;
+    transition: max-height 0.45s ease-in ;
  }
 
 
